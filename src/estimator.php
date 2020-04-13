@@ -32,8 +32,11 @@ function covid19ImpactEstimator($data)
   $interval = $timeelapse / 3;
   //End of determination of interval of 3 days
   
-  $currentlyInfectedrequestedtime = $currentlyInfected * (pow(2,$interval));
+  /*$currentlyInfectedrequestedtime = $currentlyInfected * (pow(2,$interval));
   $severeImpactrequestedtime = $severeImpact * (pow(2,$interval));
+  */
+  $currentlyInfectedrequestedtime = $currentlyInfected * (2 ** $interval);
+  $severeImpactrequestedtime = $severeImpact * (2 ** $interval);
   
   $currentlyInfectedrequestedtimesevere = $currentlyInfectedrequestedtime * 0.15;
   $severeImpactrequestedtimesevere = $severeImpactrequestedtime * 0.15;
