@@ -97,6 +97,6 @@ function covid19ImpactEstimator($data)
       "dollarsInFlight" => $severeImpactdollarsInFlight
     )
   );
-  
+  //End
   return $data;
 }
