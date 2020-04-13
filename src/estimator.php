@@ -29,7 +29,7 @@ function covid19ImpactEstimator($data)
   //End of normalizing days depending on period type
   
   //Determination of interval of 3 days
-  $interval = $timeelapse / 3;
+  $interval = floor($timeelapse / 3);
   //End of determination of interval of 3 days
   
   $currentlyInfectedrequestedtime = $currentlyInfected * (pow(2,$interval));
