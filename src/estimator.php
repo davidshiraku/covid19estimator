@@ -2,7 +2,8 @@
 
 function covid19ImpactEstimator($data)
 {
-  $result = json_decode($data,true);
+  //$result = json_decode($data,true);
+  $result = $data;
   
   //$currentlyInfected = (int)$result["region"]["avgAge"];
   
