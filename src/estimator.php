@@ -48,6 +48,15 @@ function covid19ImpactEstimator($data)
     $severeImpacthospitalBedsByRequestedTime -= $severeImpactrequestedtimesevere;
   }
   
+  $currentlyInfectedcasesForICUByRequestedTime = $currentlyInfectedrequestedtime * 0.05;
+  $severeImpactcasesForICUByRequestedTime = $severeImpactrequestedtime * 0.05;
+  
+  $currentlyInfectedcasesForVentilatorsByRequestedTime = $currentlyInfectedrequestedtime * 0.02;
+  $severeImpactcasesForVentilatorsByRequestedTime = $severeImpactrequestedtime * 0.02;
+  
+  $currentlyInfecteddollarsInFlight = $currentlyInfectedrequestedtime * $result["region"]["avgDailyIncomePopulation"] * $result["region"]["avgDailyIncomeInUSD"] * $timeelapse;
+  $severeImpactdollarsInFlight = $severeImpactrequestedtime * $result["region"]["avgDailyIncomePopulation"] * $result["region"]["avgDailyIncomeInUSD"] * $timeelapse;
+  
   $currentlyInfected = floor($currentlyInfected);
   $severeImpact = floor($severeImpact);
   $currentlyInfectedrequestedtime = floor($currentlyInfectedrequestedtime);
@@ -56,6 +65,12 @@ function covid19ImpactEstimator($data)
   $severeImpactrequestedtimesevere = floor($severeImpactrequestedtimesevere);
   $currentlyInfectedhospitalBedsByRequestedTime = floor($currentlyInfectedhospitalBedsByRequestedTime);
   $severeImpacthospitalBedsByRequestedTime = floor($severeImpacthospitalBedsByRequestedTime);
+  $currentlyInfectedcasesForICUByRequestedTime = floor($currentlyInfectedcasesForICUByRequestedTime);
+  $severeImpactcasesForICUByRequestedTime = floor($severeImpactcasesForICUByRequestedTime);
+  $currentlyInfectedcasesForVentilatorsByRequestedTime = floor($currentlyInfectedcasesForVentilatorsByRequestedTime);
+  $severeImpactcasesForVentilatorsByRequestedTime = floor($severeImpactcasesForVentilatorsByRequestedTime);
+  $currentlyInfecteddollarsInFlight = floor($currentlyInfecteddollarsInFlight);
+  $severeImpactdollarsInFlight = floor($severeImpactdollarsInFlight);
   
   $data = array();
   
@@ -67,13 +82,19 @@ function covid19ImpactEstimator($data)
       "currentlyInfected" => $currentlyInfected,
       "infectionsByRequestedTime" => $currentlyInfectedrequestedtime,
       "severeCasesByRequestedTime" => $currentlyInfectedrequestedtimesevere,
-      "hospitalBedsByRequestedTime" => $currentlyInfectedhospitalBedsByRequestedTime
+      "hospitalBedsByRequestedTime" => $currentlyInfectedhospitalBedsByRequestedTime,
+      "casesForICUByRequestedTime" => $currentlyInfectedcasesForICUByRequestedTime,
+      "casesForVentilatorsByRequestedTime" => $currentlyInfectedcasesForVentilatorsByRequestedTime,
+      "dollarsInFlight" => $currentlyInfecteddollarsInFlight
     ),
     "severeImpact"=> array(
       "currentlyInfected" => $severeImpact,
       "infectionsByRequestedTime" => $severeImpactrequestedtime,
       "severeCasesByRequestedTime" => $severeImpactrequestedtimesevere,
-      "hospitalBedsByRequestedTime" => $severeImpacthospitalBedsByRequestedTime
+      "hospitalBedsByRequestedTime" => $severeImpacthospitalBedsByRequestedTime,
+      "casesForICUByRequestedTime" => $severeImpactcasesForICUByRequestedTime,
+      "casesForVentilatorsByRequestedTime" => $severeImpactcasesForVentilatorsByRequestedTime,
+      "dollarsInFlight" => $severeImpactdollarsInFlight
     )
   );
   
