@@ -41,8 +41,8 @@ function covid19ImpactEstimator($data)
   $currentlyInfectedrequestedtimesevere = $currentlyInfectedrequestedtime * 0.15;
   $severeImpactrequestedtimesevere = $severeImpactrequestedtime * 0.15;
   
-  $currentlyInfectedhospitalBedsByRequestedTime = $result["totalHospitalBeds"] * 0.35;
-  $severeImpacthospitalBedsByRequestedTime = $result["totalHospitalBeds"] * 0.35;
+  $currentlyInfectedhospitalBedsByRequestedTime = sprintf('%.0f', $result["totalHospitalBeds"] * 0.35);
+  $severeImpacthospitalBedsByRequestedTime = sprintf('%.0f', $result["totalHospitalBeds"] * 0.35);
   
   if ($currentlyInfectedhospitalBedsByRequestedTime < $currentlyInfectedrequestedtimesevere){
     $currentlyInfectedhospitalBedsByRequestedTime -= $currentlyInfectedrequestedtimesevere;
